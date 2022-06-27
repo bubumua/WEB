@@ -1,0 +1,61 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+/*清除浮动*/
+.clearfix::after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    /*IE6-7专门清除浮动语句*/
+    *zoom: 1;
+}
+
+
+body {
+    position: relative;
+}
+
+.viewport {
+    width: 94%;
+    height: 100%;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(43, 62, 73);
+    /* overflow: auto; */
+
+}
+
+.input, .output {
+    float: left;
+    width: 50%;
+    height: 200px;
+    overflow: auto;
+}
+
+.input {
+    background-color: rgb(233, 161, 102);
+
+}
+
+.output {
+    background-color: rgb(72, 194, 194);
+
+}
+
+.btn-run {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+}
+
+h1, h2 {
+    color: white;
+    text-align: center;
+}
