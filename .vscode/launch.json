@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Microsoft Edge and open the Edge DevTools",
+            "type": "pwa-msedge",
+            "request": "launch",
+            "url": "http://localhost:5500/${fileBasenameNoExtension}/${fileBasenameNoExtension}.html", // 要打开的html文件地址
+            "webRoot": "${workspaceFolder}/debug"
+        }
+    ]
+}
