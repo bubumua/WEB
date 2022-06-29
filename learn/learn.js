@@ -18,6 +18,13 @@ function addAgeByOne(obj) {
         print("age is not in obj");
     }
 }
+const zhangsan = {
+    name: 'zhangsan',
+    age: 18,
+    introduceself: function () {
+        console.log(`my name is ${this.name}, I am ${this.age} years old`);
+    }
+};
 /*先行定义 end*/
 
 let originArray = [1, 2, 3, 4];
@@ -44,13 +51,8 @@ const people = [
     }
 ];
 print(people.find((element, index, array) => element.age < 28));
-let a = [0.88, 0.798, 0.767, 0.728, 0.018, -0.262];
-let b = [];
-let c = 0;
-for (let i = 0; i < a.length; i++) {
-    c += a[i] * a[i];
-}
-for (let i = 0; i < a.length; i++) {
-    b[i] = a[i] / Math.sqrt(c);
-}
-print(b);
+let colors = ["red", "green", "blue"];
+let news = colors.concat("sd", 1);
+print(colors);
+print(news);
+zhangsan.introduceself();

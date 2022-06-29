@@ -1,0 +1,65 @@
+* {
+    margin: 0px;
+    padding: 0px;    
+}
+
+/*清除浮动样式*/
+.clearfix::after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix {
+    *zoom:1;/*IE6-7专门清除浮动语句*/
+}
+
+.header {
+
+    background-color: #418cee;
+    /* height: 30px; */
+    padding: 2px;
+    text-align: center;
+
+}
+
+.header-left-logo {
+    float: left;
+    /* margin-left: 10px; */
+}
+
+.header-left-logo img {
+    height: 30px;
+    /* width: 30px; */
+}
+
+.header-right {
+    float: right;
+    /* margin-right: 10px; */
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+    background-color: #f1f1f1;
+}
+li {
+    display: inline;
+    float: left;
+}
+
+li a {
+    width:auto;
+    color: #000;
+    /* padding: 8px 16px; */
+    text-decoration: none;
+    font-size: 26px;
+}
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
