@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽签小工具</title>
+    <link rel="stylesheet" type="text/css" href="dl.css" />
+</head>
+
+<body>
+    <div class="customization">
+        <div class="setting-title">Settings</div>
+        <div class="settings">
+            <div class="option">
+                <label for="putback">
+                    是否放回<input type="checkbox" id="putback">
+                </label>
+
+            </div>
+            <div class="lotsbox" id="lotsbox">
+                <div class="lot" id="lot-0" contenteditable="true">点击编辑此签<img src="../source/img/close.png" alt="close"
+                        class="close" onclick="deleteLot(this)">
+                </div>
+                <div class="lot" id="lot-addition" onclick="addLot()">+</div>
+            </div>
+            <div class="confirm">
+                <button class="button" id="btn" onclick="ok(this)">确认</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="dl.js"></script>
+
+</html>

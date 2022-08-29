@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽签</title>
+    <link rel="stylesheet" type="text/css" href="drawlots.css" />
+</head>
+
+<body>
+    <div>
+        <div class="navbar">
+            <div class="navbar-brand">抽签</div>
+            <div class="navbar-nav">
+                <div class="boxinfo">
+                    <span class="total">总签数：</span>
+                    <span class="drawn">已抽数：</span>
+                    <span class="left">剩余数：</span>
+                </div>
+                <button class="draw" id="draw" onclick="print()">Draw It</button>
+                <form class="setting">
+                    <input type="submit" value="Draw">
+                    <input type="text" name="lots-number" placeholder="一次抽取签数" class="lots-number">
+                </form>
+            </div>
+        </div>
+        <div class="box">
+            <ul class="lots" id="lots-left">
+                <li class="lot" contenteditable="true">标签内容1</li>
+                <li class="lot" contenteditable="true">标签内容2</li>
+                <li class="lot" contenteditable="true">标签内容3</li>
+                <li class="lot" contenteditable="true">标签内容4</li>
+                <li class="lot" contenteditable="true">标签内容5</li>
+                <li class="lot" contenteditable="true">标签内容6</li>
+                <li class="lot" contenteditable="true">标签内容，凑数用的</li>
+                <li class="lot" contenteditable="true">标签内容，凑数用的</li>
+                <li class="lot" contenteditable="true">标签内容，凑数用的</li>
+                <li class="lot" contenteditable="true">标签内容，凑数用的</li>
+                <li class="lot-addition" id="lot-addition">+</li>
+            </ul>
+        </div>
+        <div class="resault">
+            <ul class="lots" id="lots-drawn">
+
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="drawlots.js"></script>
+
+</html>

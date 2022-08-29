@@ -1,0 +1,116 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*清除浮动样式*/
+.clearfix::after {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE6-7专门清除浮动语句*/
+}
+
+.customization {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    width: 70%;
+    margin: auto;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: rgb(85, 167, 226);
+}
+
+.setting-title {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    /* margin-bottom: 5px; */
+}
+
+.settings {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.settings>div {
+    width: 100%;
+    border-radius: 10px;
+    margin: 3px 0;
+    padding: 5px;
+}
+
+.option {
+    background-color: rgb(225, 129, 39);
+}
+
+.lotsbox {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: wheat;
+}
+
+.lot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+    margin: 5px;
+    padding: 3px 14px;
+    border-radius: 5px;
+    background-color: rgb(203, 103, 103);
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.close:hover {
+    background-color: rgb(239, 112, 112);
+}
+
+#lot-addition {
+    width: 30px;
+    user-select: none;
+}
+
+.confirm {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    padding: 3px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn {
+    background-color: rgb(53, 163, 53);
+    padding: 5px 15px;
+    font-size: 20px;
+}
+
+#btn:hover {
+    background-color: rgb(103, 184, 103);
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wl2</title>
+    <link rel="stylesheet" type="text/css" href="wl2.css" />
+</head>
+
+<body>
+    <div class="glb">
+        <div class="nav">
+            <div class="pctitle">个人中心</div>
+            <div class="rnav">
+                <input type="text" placeholder="search">
+                <div class="tab-choose">
+                    <div id="one">选项一</div>
+                    <div id="two">选项二</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="selfinfo">
+                最原始的文字大多是图画符号，即通过象物来表达。古代埃及文字中，也有几个图画符号来表达其音组合后对应事物的做法。苏美尔文字也经历过这个时期。但值得注意的是，汉字的“象形”与古西方文字的“象形”是两个完全不同的概念，事实上古埃及文字中绝大部分图画符号并非以形表意，而是表音符号。实质上类似于字母文字。举个例子来说，在古埃及文字语法中，看起来像是各种鸟的符号，其实跟鸟无关，而是表示不同的的发音。所以所谓的“古埃及象形文字”，其实是世界上最早的拼音文字。（按：早年中国学者在翻译“hieroglyph”时错误的放弃了直译法，而是比较形象的根据古埃及文字的图画特征，套用汉字造字法中的象形，翻译为象形文字流传至今。
+                文字变化的机理和拼音文字存在的原因在哪里？很重要的一点是文字还没发生和成熟之前，言语已经高度成熟了，即使是没有文字的民族，它们的口语也能涵盖日常生产生活的诸多内容。在语言还没有产生之前，人们已经能认识周围事物，而文字则是对周围事物的抽象化体现，又比如在汉字这样的意音系统里，虚词普遍采用了“假借”手法，譬如“然”即是今天的“燃”的本字，火字旁乃是后人为了和“虚词”用法相区分而加上去的（容易注意到，火字旁其实是和“然”字的火字底（四点底）相重复的），以今人度之，即如画一个抽象符号即可。
+            </div>
+            <div class="text">
+                <div class="text-title">记事本</div>
+                <div class="text-content">
+                    <ul>
+                        <li>
+                            <p>
+                                您有一条来自老妈的新消息：吃的方面要自己照顾好自己，不要只吃两顿。吃完饭么碗筷洗洗。多锻炼锻炼身体，别老窝在家里。
+                            </p>
+                        </li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                        <li>ddd</li>
+                    </ul>
+                </div>
+                <div class="text-addtion" id="add" onclick="setRandomColor()">
+                    <span>添加</span>
+                </div>
+            </div>
+            <div class="message">
+                这里是邮箱信息：
+                最原始的文字大多是图画符号，即通过象物来表达。古代埃及文字中，也有几个图画符号来表达其音组合后对应事物的做法。苏美尔文字也经历过这个时期。但值得注意的是，汉字的“象形”与古西方文字的“象形”是两个完全不同的概念，事实上古埃及文字中绝大部分图画符号并非以形表意，而是表音符号。实质上类似于字母文字。举个例子来说，在古埃及文字语法中，看起来像是各种鸟的符号，其实跟鸟无关，而是表示不同的的发音。所以所谓的“古埃及象形文字”，其实是世界上最早的拼音文字。（按：早年中国学者在翻译“hieroglyph”时错误的放弃了直译法，而是比较形象的根据古埃及文字的图画特征，套用汉字造字法中的象形，翻译为象形文字流传至今。
+                文字变化的机理和拼音文字存在的原因在哪里？
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let colorOfAdd = "aqua";
+    function randomRGB() {
+        let r = Math.round(Math.random() * 256);
+        let g = Math.round(Math.random() * 256);
+        let b = Math.round(Math.random() * 256);
+        return `rgb(${r}, ${g},${b})`;
+    }
+    function setRandomColor() {
+        document.getElementById("add").style.cssText = `background-color: ${randomRGB()}`;
+    }
+</script>
+
+</html>
