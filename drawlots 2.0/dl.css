@@ -17,6 +17,8 @@
     /*IE6-7专门清除浮动语句*/
 }
 
+.global {}
+
 .customization {
     display: flex;
     flex-flow: column nowrap;
@@ -31,8 +33,15 @@
 .setting-title {
     display: flex;
     justify-content: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: pointer;
     /* margin-bottom: 5px; */
+    transition: 0.5s;
+}
+
+.setting-title:hover {
+    color: rgb(176, 0, 192);
 }
 
 .settings {
@@ -40,12 +49,13 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    align-items: center;
-
+    align-items: stretch;
+    overflow: hidden;
+    height: 100%;
 }
 
-.settings>div {
-    width: 100%;
+.option,
+.lotsbox {
     border-radius: 10px;
     margin: 3px 0;
     padding: 5px;
@@ -81,7 +91,7 @@
     right: -8px;
     top: -8px;
     background-color: red;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .close:hover {
@@ -105,12 +115,49 @@
     cursor: pointer;
 }
 
-#btn {
+#save {
     background-color: rgb(53, 163, 53);
     padding: 5px 15px;
     font-size: 20px;
 }
 
-#btn:hover {
+#save:hover {
     background-color: rgb(103, 184, 103);
+}
+
+#history {
+    width: fit-content;
+    margin-left: 75%;
+}
+
+.function {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+#replay {
+    background-color: rgb(53, 163, 53);
+    padding: 5px 15px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+#replay:hover {
+    background-color: rgb(103, 184, 103);
+}
+
+#draw {
+    background-color: rgb(53, 163, 53);
+    padding: 5px 15px;
+    margin: 5px;
+    font-size: 40px;
+}
+
+#draw:hover {
+    background-color: rgb(103, 184, 103);
+}
+
+img {
+    user-select: none;
 }

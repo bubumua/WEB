@@ -10,24 +10,33 @@
 </head>
 
 <body>
-    <div class="customization">
-        <div class="setting-title">Settings</div>
-        <div class="settings">
-            <div class="option">
-                <label for="putback">
-                    是否放回<input type="checkbox" id="putback">
-                </label>
+    <div class="global">
+        <div class="customization">
+            <div class="setting-title" onclick="openOrCloseSetting()">抽签设置</div>
+            <div class="settings" id="settings">
+                <div class="option">
+                    <label for="putback">
+                        是否放回<input type="checkbox" id="putback">
+                    </label>
 
-            </div>
-            <div class="lotsbox" id="lotsbox">
-                <div class="lot" id="lot-0" contenteditable="true">点击编辑此签<img src="../source/img/close.png" alt="close"
-                        class="close" onclick="deleteLot(this)">
                 </div>
-                <div class="lot" id="lot-addition" onclick="addLot()">+</div>
+                <div class="lotsbox" id="lotsbox">
+                    <div class="lot" id="lot-0" onclick="selectText(this)">
+                        <p id="lotText-0" contenteditable="true" onchange="settingChange()">点击编辑此签
+                        </p>
+                        <img src="../source/img/close.png" alt="close" class="close" onclick="deleteLot(this)">
+                    </div>
+                    <div class="lot" id="lot-addition" onclick="addLot()">+</div>
+                </div>
+                <div class="confirm">
+                    <button class="button" id="save" onclick="saveSetting()" title="保存后按此设置抽签">保存并重抽</button>
+                </div>
             </div>
-            <div class="confirm">
-                <button class="button" id="btn" onclick="ok(this)">确认</button>
-            </div>
+        </div>
+        <div class="history"><a href="" id="history">历史记录</a></div>
+        <div class="function">
+            <button class="button" id="replay" onclick="replay()" title="仍然按照上一次保存的设置抽签">重新<br>抽签</button>
+            <button class="button" id="draw" onclick="draw()" title="来一发">抽签</button>
         </div>
     </div>
 </body>
