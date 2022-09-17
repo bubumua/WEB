@@ -17,8 +17,6 @@
     /*IE6-7专门清除浮动语句*/
 }
 
-.global {}
-
 .customization {
     display: flex;
     flex-flow: column nowrap;
