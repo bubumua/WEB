@@ -5,30 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>particle-spring </title>
-    <!-- import css -->
-    <!-- <link rel="stylesheet" href="particle-K.css"> -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    <title>particle-spring</title>
 </head>
 
 <body>
+    <div><span style="color:white;">Particle</span></div>
+    <div><span style="color:white;">canvas基于弹簧模型的跟随鼠标粒子运动特效</span></div>
     <div>
-
-        <canvas id="canvas">Particle</canvas>
+        <canvas id="particle">Particle</canvas>
     </div>
 </body>
 
 <!-- import javascipt -->
 <script>
     // Particle System
-    const canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('particle');
     const ctx = canvas.getContext('2d');
 
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0px';
+    canvas.style.left = '0px';
+    canvas.style.zIndex = -10;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -42,31 +39,79 @@
         mouse.y = event.clientY;
     });
 
+    class Color {
+        constructor(r, g, b) {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = 1;
+            this.colorString = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',' + this.a + ')';
+        }
+        // refresh color string
+        updateColorString(r, g, b) {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.colorString = 'rgba(' + this.r + ',' + this.g + ',' + this.b + ',' + this.a + ')';
+            return this.colorString;
+        }
+        // set color and update color string
+        setColor(r, g, b) {
+            return this.updateColorString(r, g, b);
+        }
+    }
+    const particleNumber = 13;
+    const backgroundColorCoverage = 0.18;
     class Particle {
         constructor(randomSeed) {
             this.M = 1e-6;   // adjust the speed of change in the direction of motion. the lower the value, the greater the range of motion
             this.T = 0.1;  // adjust movement distance per frame
             this.speed = 2000 + 5000 * randomSeed;   // the speed of the particle
+            this.radius = 5;    // size of particle
+            // about color
+            this.startColor = new Color(0, 256, 0);
+            this.endColor = new Color(0, 0, 256);
+            this.color = new Color(this.startColor.r, this.startColor.g, this.startColor.b);
+            this.colorCounter = 0;
+            this.colorUpdatePeriod = 256;   // per which update color
+
             this.x = Math.random() * canvas.width;  // position in x
             this.y = Math.random() * canvas.height; // position in y
-            this.radius = 5;    // size of particle
-            this.color = 'white';   // color of particle
             this.velocity = {   // velocity of particle in X and Y direction
                 x: 0,
                 y: 0
             };
         }
-
-        draw(next) {
+        // draw particle
+        draw() {
             ctx.beginPath();
-            ctx.strokeStyle = this.color;
+            ctx.strokeStyle = this.color.colorString;
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
+            ctx.fillStyle = this.color.colorString;
             ctx.fill();
             ctx.closePath();
         }
-
-        // 确定粒子接下来的位置
+        // update the color of particle
+        updateCurrentColor() {
+            this.colorCounter++;
+            if (this.colorCounter > this.colorUpdatePeriod) {
+                this.colorCounter = 0;
+                let temp = this.startColor;
+                this.startColor = this.endColor;
+                this.endColor = temp;
+            }
+            let r1 = this.startColor.r,
+                r2 = this.endColor.r,
+                g1 = this.startColor.g,
+                g2 = this.endColor.g,
+                b1 = this.startColor.b,
+                b2 = this.endColor.b;
+            let cr = r1 + (r2 - r1) * this.colorCounter / this.colorUpdatePeriod,
+                cg = g1 + (g2 - g1) * this.colorCounter / this.colorUpdatePeriod,
+                cb = b1 + (b2 - b1) * this.colorCounter / this.colorUpdatePeriod;
+            return this.color.updateColorString(cr, cg, cb);
+        }
+        // Determine the next position of the particle
         update(mouse) {
             // calculate necessary values
             let deltaX = mouse.x - this.x,
@@ -82,18 +127,20 @@
             // Determine displacement
             this.x += (this.velocity.x) * this.T;
             this.y += (this.velocity.y) * this.T;
+            // update color
+            this.updateCurrentColor();
             // draw particle
-            this.draw(this);
+            this.draw();
         }
     }
     // create particles
     const particles = [];
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < particleNumber; i++) {
         particles.push(new Particle(Math.random()));
     }
 
     function animate() {
-        ctx.fillStyle = 'rgba(0, 0, 0,0.1)';   // 透明度调节托影，过低影响画面
+        ctx.fillStyle = 'rgba(0, 0, 0,' + backgroundColorCoverage + ')';   // 透明度调节托影，过低影响画面
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         particles.forEach((particle) => {
