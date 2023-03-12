@@ -44,64 +44,51 @@
 
     class Particle {
         constructor(randomSeed) {
-            this.M = 15;
-            this.T = 0.1;  // whole speed, not too low
-            this.radians = 0;
-            this.maxSpeed = 100 + 100 * randomSeed;
-            this.maxDelta = 300;
-            this.x = randomSeed * randomSeed * canvas.width;
-            this.y = randomSeed * canvas.height;
-            this.radius = 5;    // 粒子半径
-            this.color = 'white';   // 粒子颜色
-            this.velocity = {
+            this.M = 1e-6;   // adjust the speed of change in the direction of motion. the lower the value, the greater the range of motion
+            this.T = 0.1;  // adjust movement distance per frame
+            this.speed = 2000 + 5000 * randomSeed;   // the speed of the particle
+            this.x = Math.random() * canvas.width;  // position in x
+            this.y = Math.random() * canvas.height; // position in y
+            this.radius = 5;    // size of particle
+            this.color = 'white';   // color of particle
+            this.velocity = {   // velocity of particle in X and Y direction
                 x: 0,
                 y: 0
             };
-            this.nextPosition = {
-                x: this.x,
-                y: this.y
-            };
-            this.lastMouse = {
-                x: this.x,
-                y: this.y
-            }
         }
 
         draw(next) {
             ctx.beginPath();
             ctx.strokeStyle = this.color;
-            // ctx.lineWidth = this.radius;
-            // ctx.moveTo(next.x, next.y);
-            ctx.arc(next.x, next.y, this.radius, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = this.color;
             ctx.fill();
-            // ctx.stroke();
             ctx.closePath();
         }
 
         // 确定粒子接下来的位置
         update(mouse) {
+            // calculate necessary values
             let deltaX = mouse.x - this.x,
-                deltaY = mouse.y - this.y;
-            let distanceFromMouse = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-            this.velocity.x += deltaX / this.M;
-            this.velocity.y += deltaY / this.M;
+                deltaY = mouse.y - this.y,
+                distanceFromMouse = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            // calculate variation in velocity 
+            this.velocity.x += deltaX * this.M * distanceFromMouse * distanceFromMouse;
+            this.velocity.y += deltaY * this.M * distanceFromMouse * distanceFromMouse;
+            // speed restriction
             let currentVelocity = Math.sqrt(this.velocity.x * this.velocity.x + this.velocity.y * this.velocity.y);
-            if (currentVelocity > this.maxSpeed) {
-                this.velocity.x *= (Math.sqrt(this.maxSpeed) / currentVelocity);
-                this.velocity.y *= (Math.sqrt(this.maxSpeed) / currentVelocity);
-            }
-
-            console.log(this.velocity.x, this.velocity.y);
+            this.velocity.x *= (Math.sqrt(this.speed) / currentVelocity);
+            this.velocity.y *= (Math.sqrt(this.speed) / currentVelocity);
+            // Determine displacement
             this.x += (this.velocity.x) * this.T;
             this.y += (this.velocity.y) * this.T;
+            // draw particle
             this.draw(this);
         }
     }
     // create particles
     const particles = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 13; i++) {
         particles.push(new Particle(Math.random()));
     }
 

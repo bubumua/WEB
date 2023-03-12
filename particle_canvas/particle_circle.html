@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>particle_circle</title>
+    <!-- import css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas">Particle</canvas>
+
+    </div>
+</body>
+
+<!-- import javascipt -->
+<script>
+    // Particle System
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Particle {
+        constructor(randomSeed) {
+            this.x = randomSeed * canvas.width;
+            this.y = randomSeed * canvas.height;
+            this.radius = randomSeed * 3 + 2;    // 粒子大小
+            this.color = 'white';   // 粒子颜色
+            // this.radians = Math.random() * Math.PI * 100;
+            this.radians = 0;
+            this.velocity = 0.1;
+            this.angle = randomSeed * Math.PI * 2; // 生成 0 到 2π 之间的随机角度
+            this.distanceFromCenter = {
+                x: randomSeed * 100 + 75,
+                y: randomSeed * 100 + 75
+            };
+            this.lastMouse = {
+                x: this.x,
+                y: this.y
+            };
+        }
+
+        draw(lastPoint) {
+            ctx.beginPath();
+            ctx.strokeStyle = this.color;
+            // ctx.lineWidth = this.radius;
+            // ctx.moveTo(lastPoint.x, lastPoint.y);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            // ctx.stroke();
+            ctx.closePath();
+        }
+
+        update(mouse) {
+            let deltaX = mouse.x - this.lastMouse.x,
+                deltaY = mouse.y - this.lastMouse.y;
+            this.lastMouse.x += (deltaX) * 0.05;
+            this.lastMouse.y += (deltaY) * 0.05;
+            this.radians += this.velocity * (deltaX / Math.abs(deltaX));
+
+            this.x =
+                this.lastMouse.x +
+                Math.cos(this.radians) * this.distanceFromCenter.x;
+            this.y =
+                this.lastMouse.y +
+                Math.sin(this.radians) * this.distanceFromCenter.y;
+
+            this.draw(this.lastMouse);
+        }
+    }
+    // create particles
+    const particles = [];
+    for (let i = 0; i < 2; i++) {
+        particles.push(new Particle(Math.random()));
+    }
+
+    const mouse = {
+        x: canvas.width / 2,
+        y: canvas.height / 2
+    };
+
+    canvas.addEventListener('mousemove', (event) => {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+    });
+
+    function animate() {
+        ctx.fillStyle = 'rgba(0, 0, 0,0.1)';   // 透明度调节托影，过低影响画面
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((particle) => {
+            particle.update(mouse);
+        });
+        requestAnimationFrame(animate);
+    }
+
+    // 消除起始画布渐变
+    ctx.fillStyle = 'rgba(0, 0, 0)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // 启动动画循环
+    animate();
+</script>
+
+</html>
