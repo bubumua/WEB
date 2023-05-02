@@ -1,0 +1,40 @@
+{
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDesc__",
+    "default_locale": "zh_CN",
+    "version": "1.3.26.2",
+    "manifest_version": 2,
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "icons": {
+        "64": "icon/todo.png",
+        "128": "icon/todo.png",
+        "192": "icon/todo.png",
+        "512": "icon/todo.png"
+    },
+    "externally_connectable": {
+        "matches": [
+            "*://*.codelife.cc/*"
+        ]
+    },
+    "background": {
+        "page": "dist/index.html",
+        "persistent": true
+    },
+    "permissions": [
+        "bookmarks",
+        "tabs"
+    ],
+    "browser_action": {
+        "default_icon": "icon/icon_64.png",
+        "default_title": "iTab New Tab",
+        "default_popup": "dist/popup.html"
+    },
+    "chrome_url_overrides": {
+        "newtab": "dist/index.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{b9a34893-6bdd-4232-8da2-ee0c0aaada92}"
+        }
+    }
+}

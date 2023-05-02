@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>ChatGPT官方v1版 - 对接示例</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <input type="text" id="question" placeholder="请输入问题">
+    <button id="submit-btn">提交</button>
+    <p id="answer"></p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#submit-btn').click(function () {
+                var question = $('#question').val();
+                $.ajax({
+                    url: 'https://gpt.tool00.com/',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { q: question, apitype: 'sql' },
+                    success: function (data) {
+                        $('#answer').text(data.xiarou);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.responseText);
+                        console.log(status);
+                        console.log(error);
+                        // 这可以写一个弹出提示，比如alert 请求错误
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

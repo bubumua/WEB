@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>安慰语录JS示例</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="respond"></div>
+    <input type="text" id="question" placeholder="请输入问题">
+    <button id="submit-btn">提交</button>
+    <!--引入jquery-->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+        var url_anwei = "https://v.api.aa1.cn/api/api-wenan-anwei/index.php?type=json";
+        var url_gpt_v1 = 'https://v1.apigpt.cn/';
+        $('#submit-btn').click(function () {
+            var question = $('#question').val();
+            var url_send = url_gpt_v1 + '?q=' + question + '&apitype=sql';
+            $.getJSON(url_send, function (data) {
+                $('#respond').append(data.ChatGPT_Answer);
+            });
+            // $.ajax({
+            //     url: 'https://gpt.tool00.com/',
+            //     type: 'GET',
+            //     dataType: 'json',
+            //     data: { q: question, apitype: 'sql' },
+            //     success: function (data) {
+            //         $('#answer').text(data.xiarou);
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.log(xhr.responseText);
+            //         console.log(status);
+            //         console.log(error);
+            //         // 这可以写一个弹出提示，比如alert 请求错误
+            //     }
+            // });
+        });
+    </script>
+</body>
+
+</html>
