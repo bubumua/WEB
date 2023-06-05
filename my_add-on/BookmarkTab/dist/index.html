@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark New Tab</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #404040;
+
+        }
+
+        .container {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            background-color: #404040;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .bookmark {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: start;
+            align-items: stretch;
+            background-color: #282828;
+            width: 95%;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .roots {
+            flex-grow: 0;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: stretch;
+            align-content: start;
+            width: fit-content;
+            margin: auto;
+            background-color: #000000db;
+            border-radius: 10px;
+        }
+
+        .roots-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            height: 50px;
+            color: #fff;
+            border-radius: 10px;
+            padding: 0 10px;
+            transition: 0.2s;
+        }
+
+        .roots-item:hover {
+            background-color: #6b6b6b;
+        }
+
+        .viewer {
+            flex-grow: 1;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: start;
+            align-items: stretch;
+            min-height: 300px;
+            height: auto;
+            max-height: 100%;
+        }
+
+        .viewer-content {
+            display: flex;
+            flex-flow: row wrap;
+            writing-mode: vertical-lr;
+            justify-content: start;
+            align-items: start;
+            height: 100%;
+            background-color: #1788ec;
+            /* border-left: 2px solid #6b6b6b; */
+            border-right: 5px solid #6b6b6b;
+            /* border-radius: 10px; */
+        }
+
+        .viewer-content-item {
+            display: flex;
+            flex-flow: row nowrap;
+            writing-mode: horizontal-tb;
+            justify-content: start;
+            align-items: center;
+            padding: 10px;
+            max-width: 200px;
+        }
+
+        .viewer-content-item:hover {
+            background-color: #ffffff91;
+        }
+
+        /* 已展开的文件夹元素样式 */
+        .viewer-content-item.expanded {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="widget clock">
+            <div class="time">
+
+            </div>
+        </div>
+        <div class="widget bookmark">
+            <div class="roots" id="roots">
+
+            </div>
+            <div class="viewer" id="viewer">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

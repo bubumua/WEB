@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "BookmarkTab",
+    "version": "0.1",
+    "description": "New Tab based on bookmarks",
+    "icons": {
+        "48": "icons/beasts-48.png"
+    },
+    "permissions": [
+        "bookmarks",
+        "topSites",
+        "tabs"
+    ],
+    "chrome_url_overrides": {
+        "newtab": "dist/index.html"
+    },
+    "browser_action": {
+        "default_icon": "icons/beasts-32.png",
+        "default_title": "BookmarkTab",
+        "default_popup": "popup/popup.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{b9a34893-6bdd-4232-8da2-ee0c0aaada92}"
+        }
+    }
+}
