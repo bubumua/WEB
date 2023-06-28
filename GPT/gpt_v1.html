@@ -32,6 +32,21 @@
                 });
             });
         });
+        // 以上代码是jquery的写法，如果你不会，可以用原生js的写法
+        // 以下是原生js的写法
+        // document.getElementById('submit-btn').onclick = function () {
+        //     var question = document.getElementById('question').value;
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('GET', 'https://gpt.tool00.com/?q=' + question + '&apitype=sql', true);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState == 4 && xhr.status == 200) {
+        //             var data = JSON.parse(xhr.responseText);
+        //             document.getElementById('answer').innerText = data.xiarou;
+        //         }
+        //     }
+        //     xhr.send();
+        // }
+        
     </script>
 </body>
 
